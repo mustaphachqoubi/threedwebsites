@@ -9,8 +9,6 @@ export let Sentences = [
   "a service",
   "or even yourself",
   "We will make it for you",
-  "     ",
-  "     ",
   "Welcome to a new world",
   "The world that your are professional in"
 ]

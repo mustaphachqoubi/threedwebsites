@@ -12,7 +12,6 @@ export const HeroSection = () => {
   };
 
   const showPreviousSentence = () => {
-    setOpacity(9)
     index > 0 && setIndex(index - 1);
   };
 
@@ -22,22 +21,22 @@ export const HeroSection = () => {
 
     setScrollLevel((prevDeltaY) => prevDeltaY + e.deltaY)
 
-    if (scrollLevel >= maxScrollToChange) {
+    if (e.deltaY >= 0) {
       setOpacity((prevOpacity: number) => prevOpacity + 0.1)
-    } else if (scrollLevel<= -maxScrollToChange) {
+
+      if(opacity >= maxOpacityToChangeIndex && index < Sentences.length - 1){
+        showNextSentence();
+        setOpacity(0)
+      } 
+    }
+
+    if(e.deltaY <= 0){
       setOpacity((prevOpacity: number) => prevOpacity - 0.1)
+
+      showPreviousSentence()
+      if(index > 0 && opacity >= 0) {
+      }
     }
-
-
-
-   if (opacity >= maxOpacityToChangeIndex) {
-      showNextSentence();
-      setOpacity(0)
-    } else if (opacity <= -maxOpacityToChangeIndex) {
-      showPreviousSentence();
-      setOpacity(0)
-    }
-
 
   };
 
@@ -51,7 +50,7 @@ export const HeroSection = () => {
         <div className="flex justify-center items-center text-[10vw] md:text-[4vw] text-center p-2">
           3D model
         </div>
-        <div style={{ opacity: `0.${Math.floor(opacity)}`}} className="flex flex-col justify-center items-center font-bold text-[10vw] md:text-[4vw] text-center p-2 overflow-auto ">
+        <div style={{ opacity: `0.${index === 0 ? 9 : Math.floor(opacity)}`}} className="flex flex-col justify-center items-center font-bold text-[10vw] md:text-[4vw] text-center p-2 overflow-auto ">
           {Sentences[index]}
         </div>
       </div>

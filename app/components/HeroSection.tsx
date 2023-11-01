@@ -28,14 +28,12 @@ export const HeroSection = () => {
         showNextSentence();
         setOpacity(0)
       } 
-    }
-
-    if(e.deltaY <= 0){
+    } else {
       setOpacity((prevOpacity: number) => prevOpacity - 0.1)
 
-      showPreviousSentence()
+     showPreviousSentence()
       if(index > 0 && opacity >= 0) {
-      }
+      } 
     }
 
   };
@@ -50,7 +48,7 @@ export const HeroSection = () => {
         <div className="flex justify-center items-center text-[10vw] md:text-[4vw] text-center p-2">
           3D model
         </div>
-        <div style={{ opacity: `0.${index === 0 ? 9 : Math.floor(opacity)}`}} className="flex flex-col justify-center items-center font-bold text-[10vw] md:text-[4vw] text-center p-2 overflow-auto ">
+        <div data-scroll style={{ opacity: `0.${index === 0 ? 9 : Math.floor(opacity)}`}} className="flex flex-col justify-center items-center font-bold text-[10vw] md:text-[4vw] text-center p-2 overflow-auto ">
           {Sentences[index]}
         </div>
       </div>

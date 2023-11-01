@@ -5,7 +5,6 @@ export const HeroSection = () => {
 
   const [opacity, setOpacity] = useState(1);
   const [index, setIndex] = useState(0);
-  const [scrollLevel, setScrollLevel] = useState(1);
 
   const showNextSentence = () => {
     index < Sentences.length - 1 && setIndex(index + 1);
@@ -16,10 +15,7 @@ export const HeroSection = () => {
   };
 
   const handleWheel = (e: any) => {
-    const maxScrollToChange = 100;
     const maxOpacityToChangeIndex = 10;
-
-    setScrollLevel((prevDeltaY) => prevDeltaY + e.deltaY)
 
     if (e.deltaY >= 0) {
       setOpacity((prevOpacity: number) => prevOpacity + 0.1)
@@ -29,13 +25,13 @@ export const HeroSection = () => {
         setOpacity(0)
       } 
     } else {
-      setOpacity((prevOpacity: number) => prevOpacity - 0.1)
+      setOpacity(opacity - 0.1)
 
-     showPreviousSentence()
-      if(index > 0 && opacity >= 0) {
-      } 
+      if(opacity <= 0) {
+        setOpacity(10)
+        showPreviousSentence()
+      }
     }
-
   };
 
   useEffect(() => {

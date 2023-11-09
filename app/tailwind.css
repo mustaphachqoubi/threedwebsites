@@ -1,12 +1,23 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Agbalumo";
+    src: url("../public/Agbalumo-Regular.ttf");
+}
 
 html {
 		font-family: system-ui, sans-serif;
 		background: #0f1112;
 		background-size: 224px;
 	}
+
+.test{
+  font-family: "Agbalumo";
+
+}
 
 .reverse-grid {
       direction : rtl

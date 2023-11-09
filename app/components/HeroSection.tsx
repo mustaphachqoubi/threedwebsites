@@ -52,7 +52,7 @@ export const HeroSection = () => {
         <div className="flex justify-center items-center md:items-end md:py-12">
           <div
             onClick={handleScroll}
-            className="animate-bounce border-2 border-white p-2 rounded-full cursor-pointer hover:bg-white hover:text-primary duration-300"
+            className="animate-bounce border-2 border-white/30 hover:border-white p-2 rounded-full cursor-pointer duration-300"
           >
             {index >= Sentences.length - 3 ? (
               <svg

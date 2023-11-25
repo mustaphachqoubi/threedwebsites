@@ -7,7 +7,12 @@ export const HeroSection = () => {
   const [index, setIndex] = useState(0);
 
   const handleScroll = () => {
-    index >= Sentences.length - 3 ?  setIndex(0) : setIndex(Sentences.length - 1) 
+    if( index > Sentences.length / 3){
+      setIndex(0)
+    }else{
+      setIndex(Sentences.length - 1)
+      setOpacity(9)
+    }
   };
 
   const showNextSentence = () => {
@@ -39,8 +44,12 @@ export const HeroSection = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("wheel", handleWheel);
-  });
+  window.addEventListener("wheel", handleWheel);
+
+  return () => {
+    window.removeEventListener("wheel", handleWheel);
+  };
+  }, [handleWheel]);
 
   return (
     <>

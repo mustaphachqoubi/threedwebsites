@@ -3,7 +3,7 @@ import { Sentences } from "./Sentences";
 import { WantAWebsite } from "./WantAWebsite";
 
 export const HeroSection = () => {
-  const [opacity, setOpacity] = useState(1);
+  const [opacity, setOpacity] = useState(9);
   const [index, setIndex] = useState(0);
 
   const handleScroll = () => {
@@ -95,7 +95,7 @@ export const HeroSection = () => {
 
         <div
           data-scroll
-          style={{ opacity: `0.${index === 0 ? 9 : Math.floor(opacity)}` }}
+          style={{ opacity: `0.${ Math.floor(opacity) }` }}
           className="flex flex-col justify-center items-center font-bold text-[10vw] md:text-[4vw] text-center p-2 overflow-auto "
         >
           {Sentences[index]}

@@ -43,6 +43,29 @@ export const HeroSection = () => {
     }
   };
 
+  const handleStart = () => {
+    console.log("start")
+  }
+
+  const handleEnd = () => {
+    console.log("end")
+  }
+
+  const handleCancel = () => {
+    console.log("cancel")
+  }
+
+  const handleMove = () => {
+    console.log("move")
+  }
+
+  function startup() {
+  window.addEventListener("touchstart", handleStart);
+  window.addEventListener("touchend", handleEnd);
+  window.addEventListener("touchcancel", handleCancel);
+  window.addEventListener("touchmove", handleMove);
+}
+
   useEffect(() => {
   window.addEventListener("wheel", handleWheel);
 
@@ -50,6 +73,10 @@ export const HeroSection = () => {
     window.removeEventListener("wheel", handleWheel);
   };
   }, [handleWheel]);
+
+  useEffect(() => {
+    document.addEventListener("DOMContentLoaded", startup);
+  })
 
   return (
     <>

@@ -44,27 +44,38 @@ export const HeroSection = () => {
   };
 
   const handleStart = () => {
-    console.log("start")
   }
 
   const handleEnd = () => {
-    console.log("end")
   }
 
   const handleCancel = () => {
-    console.log("cancel")
   }
 
-  const handleMove = () => {
-    console.log("move")
-  }
+    let previousClientY = 0
+  const handleMove = (evt: any) => {
 
-  function startup() {
-  window.addEventListener("touchstart", handleStart);
-  window.addEventListener("touchend", handleEnd);
-  window.addEventListener("touchcancel", handleCancel);
-  window.addEventListener("touchmove", handleMove);
-}
+    const touches = evt.changedTouches;
+    const currentClientY = touches[0].clientY
+
+    console.log(touches[0].clientY)
+    console.log('kjndkjbgkdsj')
+
+    if(currentClientY > previousClientY){
+      console.log("down")
+    }
+    if(currentClientY < previousClientY){
+      console.log("up")
+    }
+    
+    const maxOpacityToChangeIndex = 10;
+    setOpacity((prevOpacity: number) => prevOpacity + 0.3);
+
+      if (opacity >= maxOpacityToChangeIndex && index < Sentences.length - 1) {
+        showNextSentence();
+        setOpacity(0);
+      }
+  }
 
   useEffect(() => {
   window.addEventListener("wheel", handleWheel);
@@ -75,7 +86,10 @@ export const HeroSection = () => {
   }, [handleWheel]);
 
   useEffect(() => {
-    document.addEventListener("DOMContentLoaded", startup);
+  window.addEventListener("touchstart", handleStart);
+  window.addEventListener("touchend", handleEnd);
+  window.addEventListener("touchcancel", handleCancel);
+  window.addEventListener("touchmove", handleMove);
   })
 
   return (

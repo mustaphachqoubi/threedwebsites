@@ -7,11 +7,11 @@ export const HeroSection = () => {
   const [index, setIndex] = useState(0);
 
   const handleScroll = () => {
-    if( index > Sentences.length / 3){
-      setIndex(0)
-    }else{
-      setIndex(Sentences.length - 1)
-      setOpacity(9)
+    if (index > Sentences.length / 3) {
+      setIndex(0);
+    } else {
+      setIndex(Sentences.length - 1);
+      setOpacity(9);
     }
   };
 
@@ -43,54 +43,45 @@ export const HeroSection = () => {
     }
   };
 
-  const handleStart = () => {
-  }
+  const handleStart = () => {};
 
-  const handleEnd = () => {
-  }
+  const handleEnd = () => {};
 
-  const handleCancel = () => {
-  }
+  const handleCancel = () => {};
 
-    let previousClientY = 0
+  let previousClientY = 0;
+
   const handleMove = (evt: any) => {
-
     const touches = evt.changedTouches;
-    const currentClientY = touches[0].clientY
+    const currentClientY = touches[0].clientY;
 
-    console.log(touches[0].clientY)
-    console.log('kjndkjbgkdsj')
-
-    if(currentClientY > previousClientY){
-      console.log("down")
-    }
-    if(currentClientY < previousClientY){
-      console.log("up")
-    }
-    
-    const maxOpacityToChangeIndex = 10;
-    setOpacity((prevOpacity: number) => prevOpacity + 0.3);
+    if (currentClientY < previousClientY) {
+      const maxOpacityToChangeIndex = 10;
+      setOpacity((prevOpacity: number) => prevOpacity + 0.5);
 
       if (opacity >= maxOpacityToChangeIndex && index < Sentences.length - 1) {
         showNextSentence();
         setOpacity(0);
       }
-  }
+    }
+
+    previousClientY = currentClientY;
+  };
 
   useEffect(() => {
-  window.addEventListener("wheel", handleWheel);
+    window.addEventListener("wheel", handleWheel);
 
-  return () => {
-    window.removeEventListener("wheel", handleWheel);
-  };
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
   }, [handleWheel]);
 
   useEffect(() => {
-  window.addEventListener("touchstart", handleStart);
-  window.addEventListener("touchend", handleEnd);
-  window.addEventListener("touchcancel", handleCancel);
-  window.addEventListener("touchmove", handleMove);
-  })
+    window.addEventListener("touchstart", handleStart);
+    window.addEventListener("touchend", handleEnd);
+    window.addEventListener("touchcancel", handleCancel);
+    window.addEventListener("touchmove", handleMove);
+  });
 
   return (
     <>
@@ -136,7 +127,7 @@ export const HeroSection = () => {
 
         <div
           data-scroll
-          style={{ opacity: `0.${ Math.floor(opacity) }` }}
+          style={{ opacity: `0.${Math.floor(opacity)}` }}
           className="flex flex-col justify-center items-center font-bold text-[10vw] md:text-[4vw] text-center p-2 overflow-auto "
         >
           {Sentences[index]}

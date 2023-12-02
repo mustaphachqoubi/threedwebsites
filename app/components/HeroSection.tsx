@@ -42,30 +42,41 @@ export const HeroSection = () => {
       }
     }
   };
+  
+  let previousScroll = 0;
 
-  const handleStart = () => {};
+  const handleStart = (e: any) => {
+        previousScroll = e.changedTouches[0].clientY
+  };
 
   const handleEnd = () => {};
 
   const handleCancel = () => {};
 
-  let previousClientY = 0;
 
-  const handleMove = (evt: any) => {
-    const touches = evt.changedTouches;
-    const currentClientY = touches[0].clientY;
+  const handleMove = (e: any) => {
+    let currentScroll = e.changedTouches[0].clientY;
 
-    if (currentClientY < previousClientY) {
-      const maxOpacityToChangeIndex = 10;
+    if(currentScroll < previousScroll) {
+    const maxOpacityToChangeIndex = 10;
       setOpacity((prevOpacity: number) => prevOpacity + 0.5);
 
       if (opacity >= maxOpacityToChangeIndex && index < Sentences.length - 1) {
         showNextSentence();
         setOpacity(0);
       }
-    }
 
-    previousClientY = currentClientY;
+    }
+    if(currentScroll > previousScroll) {
+        setOpacity(opacity - 0.5);
+
+      if (opacity <= 0 || index === Sentences.length - 1) {
+        setOpacity(10);
+        showPreviousSentence();
+      }
+
+    }
+    
   };
 
   useEffect(() => {

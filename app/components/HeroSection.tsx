@@ -49,11 +49,6 @@ export const HeroSection = () => {
         previousScroll = e.changedTouches[0].clientY
   };
 
-  const handleEnd = () => {};
-
-  const handleCancel = () => {};
-
-
   const handleMove = (e: any) => {
     let currentScroll = e.changedTouches[0].clientY;
 
@@ -89,9 +84,12 @@ export const HeroSection = () => {
 
   useEffect(() => {
     window.addEventListener("touchstart", handleStart);
-    window.addEventListener("touchend", handleEnd);
-    window.addEventListener("touchcancel", handleCancel);
     window.addEventListener("touchmove", handleMove);
+
+    return () => {
+    window.removeEventListener("touchstart", handleStart);
+    window.removeEventListener("touchmove", handleMove);
+    };
   });
 
   return (

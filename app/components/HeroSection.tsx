@@ -46,33 +46,21 @@ export const HeroSection = () => {
   let previousScroll = 0;
 
   const handleStart = (e: any) => {
-        previousScroll = e.changedTouches[0].clientY
+    previousScroll = e.changedTouches[0].clientY
   };
 
   const handleMove = (e: any) => {
     let currentScroll = e.changedTouches[0].clientY;
 
     if(currentScroll < previousScroll) {
-    const maxOpacityToChangeIndex = 10;
-      setOpacity((prevOpacity: number) => prevOpacity + 0.5);
-
-      if (opacity >= maxOpacityToChangeIndex && index < Sentences.length - 1) {
         showNextSentence();
-        setOpacity(0);
-      }
-
     }
     if(currentScroll > previousScroll) {
-        setOpacity(opacity - 0.5);
-
-      if (opacity <= 0 || index === Sentences.length - 1) {
-        setOpacity(10);
+      if(opacity <= 0 || index === Sentences.length - 1) {
         showPreviousSentence();
       }
-
     }
-    
-  };
+  }
 
   useEffect(() => {
     window.addEventListener("wheel", handleWheel);

@@ -10,8 +10,6 @@ export default function GetAWebsite() {
 
         <div className="w-full flex justify-center gap-4">
         <div className="h-60 w-40 bg-red-500">test</div>
-        <div className="h-60 w-40 bg-red-500">test</div>
-        <div className="h-60 w-40 bg-red-500">test</div>
         </div>
 
       </div>

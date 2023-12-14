@@ -1,4 +1,21 @@
 export default function GetAWebsite() {
+
+  type PricesTypes = {
+    _id: number,
+    packName: string,
+    packFeatures: [],
+    packEmojie: string
+  }
+
+  const Prices: PricesTypes = [
+    {
+      _id: 2,
+    packName: "testPack",
+    packFeatures: ["one", "two", "three"],
+    packEmojie: "emojie"
+    }
+  ]
+
   return (
   <div className="flex h-screen flex-col p-8">
       <div className="bg-primary text-primary z-50 text-center fixed top-0 left-0 right-0">jhkhskhkhk</div>
@@ -9,7 +26,13 @@ export default function GetAWebsite() {
         <div className="h-[40vh] w-20"></div>
 
         <div className="w-full flex justify-center gap-4">
-        <div className="h-60 w-40 bg-red-500 flex justify-center items-center">test</div>
+          <h1 className="font-bold text-white w-full text-2xl">Our prices</h1>
+
+          {
+            Prices.map(p => (
+            <div>{p.packName}</div>
+            ))
+          }
         </div>
 
       </div>

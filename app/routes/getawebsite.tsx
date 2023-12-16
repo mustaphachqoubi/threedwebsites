@@ -1,9 +1,8 @@
-import emojieOne from '../../public/laptop.gif'
-import emojieTwo from '../../public/cyborg.gif'
-import emojieThree from '../../public/robot.gif'
+import emojieOne from "../../public/laptop.gif";
+import emojieTwo from "../../public/cyborg.gif";
+import emojieThree from "../../public/robot.gif";
 
 export default function GetAWebsite() {
-
   const Packages = [
     {
       _id: 2,
@@ -15,13 +14,13 @@ export default function GetAWebsite() {
       _id: 2,
       packName: "testPack",
       packFeatures: ["one", "two", "three"],
-      packEmojie: emojieTwo 
+      packEmojie: emojieTwo,
     },
     {
       _id: 2,
       packName: "testPack",
       packFeatures: ["one", "two", "three"],
-      packEmojie: emojieThree
+      packEmojie: emojieThree,
     },
   ];
 
@@ -36,21 +35,57 @@ export default function GetAWebsite() {
       <div className="text-white flex justify-center items-center flex-col gap-4">
         <div className="h-[40vh] w-20"></div>
 
-        <div className="w-full flex justify-center gap-4">
-          <h1 className="font-bold text-white w-full text-2xl">Our packages</h1>
+        <div className="w-full flex flex-col gap-8">
+          <div className="w-full flex justify-center gap-4">
+            <h1 className="font-bold text-white w-full text-2xl">
+              Our packages
+            </h1>
+          </div>
+
+          <div className="w-full flex flex-col z-10 md:flex-row gap-6 justify-center items-center ">
+            {Packages.map((pack: any) => (
+              <div className="relative bg-white text-black p-4 rounded-lg w-60 h-96 ">
+                <div
+                  className="bg-primary absolute -top-[10px] -right-[10px] rounded-full w-20 h-20 
+                text-white flex justify-center items-center"
+                >
+                  <img
+                    className="border-2 border-hidden w-14 rounded-full"
+                    src={pack.packEmojie}
+                  />
+                </div>
+                {pack.packName}
+              </div>
+            ))}
+          </div>
         </div>
 
-          <div className="w-full flex flex-col z-10 md:flex-row gap-6 justify-center items-center">
-        {Packages.map((pack: any) => (
-            <div className="relative bg-white text-black p-4 rounded-lg w-60 h-96 ">
-              <div className="bg-primary absolute -top-[10px] -right-[10px] rounded-full w-20 h-20 
-                text-white flex justify-center items-center">
-                  <img className='border-2 border-hidden w-14 rounded-full' src={pack.packEmojie}/>
-              </div>
-              {pack.packName}
-            </div>
-        ))}
+        <div className="w-full flex flex-col gap-8 mt-40">
+          <div className="w-full flex justify-center gap-4">
+            <h1 className="font-bold text-white w-full text-2xl">
+              Our packages
+            </h1>
           </div>
+
+          <div className="w-full flex flex-col z-10 md:flex-row gap-6 justify-center items-center ">
+            {Packages.map((pack: any) => (
+              <div className="relative bg-white text-black p-4 rounded-lg w-60 h-96 ">
+                <div
+                  className="bg-primary absolute -top-[10px] -right-[10px] rounded-full w-20 h-20 
+                text-white flex justify-center items-center"
+                >
+                  <img
+                    className="border-2 border-hidden w-14 rounded-full"
+                    src={pack.packEmojie}
+                  />
+                </div>
+                {pack.packName}
+              </div>
+            ))}
+          </div>
+        </div>
+
+
       </div>
     </div>
   );

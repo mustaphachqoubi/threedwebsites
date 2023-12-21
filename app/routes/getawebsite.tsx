@@ -6,19 +6,19 @@ export default function GetAWebsite() {
   const Packages = [
     {
       _id: 2,
-      packName: "testPack",
+      packName: "Have a design ?",
       packFeatures: ["one", "two", "three"],
       packEmojie: emojieOne,
     },
     {
       _id: 2,
-      packName: "testPack",
+      packName: "Custom",
       packFeatures: ["one", "two", "three"],
       packEmojie: emojieTwo,
     },
     {
       _id: 2,
-      packName: "testPack",
+      packName: "VIP",
       packFeatures: ["one", "two", "three"],
       packEmojie: emojieThree,
     },
@@ -44,7 +44,7 @@ export default function GetAWebsite() {
 
           <div className="w-full flex flex-col z-10 md:flex-row gap-6 justify-center items-center ">
             {Packages.map((pack: any) => (
-              <div className="relative bg-white text-black p-4 rounded-lg w-60 h-96 ">
+              <div className="relative bg-white text-black p-4 rounded-lg w-60 h-96 font-bold">
                 <div
                   className="bg-primary absolute -top-[10px] -right-[10px] rounded-full w-20 h-20 
                 text-white flex justify-center items-center"
